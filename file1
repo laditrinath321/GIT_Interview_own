@@ -1,0 +1,268 @@
+Sure! Below is an outline of **What**, **Why**, **How**, and practical use cases for the requested Git topics, followed by potential interview questions and answers related to DevOps. 
+
+---
+
+### 1. **What is Git?**
+**What:**  
+Git is a distributed version control system (VCS) designed to handle projects with speed and efficiency. It helps track changes in source code during development.
+
+**Why:**  
+- To collaborate effectively in teams.
+- Maintain a history of code changes.
+- Enable branching and merging strategies.
+
+**How:**  
+- Install Git:  
+  ```
+  sudo apt-get install git (Linux)
+  brew install git (macOS)
+  ```
+- Verify Installation:  
+  ```
+  git --version
+  ```
+
+**Use Case:**  
+Developers working on a software project can simultaneously work on different features using branches, merge them, and review the history of changes.
+
+---
+
+### 2. **Installing Git and Basic Git Commands Overview**
+**Basic Commands:**
+- `git init`: Initialize a new Git repository.
+- `git clone`: Clone an existing repository.
+- `git status`: Check the status of your working directory.
+- `git add`: Stage changes.
+- `git commit`: Save changes to the repository.
+- `git log`: View commit history.
+
+**Practical Example:**
+1. Initialize a repository:
+   ```bash
+   git init
+   ```
+2. Track changes:
+   ```bash
+   git add file.txt
+   git commit -m "Initial commit"
+   ```
+
+---
+
+### 3. **Difference between Git and GitHub**
+**Git:**  
+- A version control system.
+- Works locally.
+
+**GitHub:**  
+- A cloud-based hosting platform for Git repositories.
+- Adds collaboration tools like pull requests, issue tracking, and CI/CD.
+
+---
+
+### 4. **Difference between Git and SVN**
+| Feature          | Git                              | SVN                           |
+|-------------------|----------------------------------|-------------------------------|
+| VCS Type         | Distributed                     | Centralized                  |
+| Offline Work     | Possible                        | Limited                      |
+| Branching        | Lightweight                     | Heavy                        |
+| Performance      | Faster                          | Slower in large projects     |
+
+---
+
+### 5. **Creating a GitHub Account and Using GitHub**
+1. **What:**  
+   GitHub is a platform to host repositories.
+
+2. **How to Create and Use:**  
+   - Visit [GitHub](https://github.com) and sign up.
+   - Use commands like:
+     ```bash
+     git remote add origin <repo-url>
+     git push -u origin main
+     ```
+
+3. **Use Case:**  
+   Collaborative open-source project contributions.
+
+---
+
+### 6. **Git Stages**
+**Stages:**
+- **Working Directory:** Your local files.
+- **Staging Area:** Files staged for commit.
+- **Repository:** Committed changes.
+
+**Use Case:**  
+Use `git add` to stage changes and `git commit` to save snapshots.
+
+---
+
+### 7. **Git Branches**
+**What:**  
+Branches allow isolated development of features.
+
+**Why:**  
+Facilitate parallel development without affecting the main code.
+
+**Commands:**  
+- Create: `git branch feature-branch`
+- Switch: `git checkout feature-branch`
+
+**Use Case:**  
+Develop a new feature while maintaining a stable main branch.
+
+---
+
+### 8. **Git Branching Strategy**
+**Strategies:**
+1. Git Flow: Separate branches for features, releases, and hotfixes.
+2. Trunk-Based: Directly commit small changes to the main branch.
+
+**Use Case:**  
+A development team uses Git Flow to maintain multiple releases.
+
+---
+
+### 9. **Git Merge and Rebase**
+- **Merge:** Combines branches.
+- **Rebase:** Reapplies commits on top of another branch.
+
+**Command:**
+```bash
+git merge feature-branch
+git rebase main
+```
+
+**Scenario:**  
+Use `merge` for a pull request; `rebase` for a cleaner history.
+
+---
+
+### 10. **Basic Linux Commands for Git Practice**
+- Navigation: `ls`, `cd`
+- File Management: `touch`, `rm`
+- Permissions: `chmod`
+
+**Practical Example:**  
+Navigate to a project directory:
+```bash
+cd /path/to/repo
+```
+
+---
+
+### 11. **Git Repository Setup**
+**Steps:**
+1. Initialize: `git init`
+2. Add Remote: `git remote add origin <url>`
+
+---
+
+### 12. **Git Push, Pull, and Fetch**
+- **Push:** Upload changes to a remote repository.
+- **Pull:** Fetch and merge changes.
+- **Fetch:** Retrieve changes without merging.
+
+---
+
+### 13. **Git Stash**
+**Command:**
+```bash
+git stash
+git stash apply
+```
+
+**Use Case:**  
+Temporarily save changes before switching branches.
+
+---
+
+### 14. **Git Conflicts**
+**What:**  
+Conflicts occur when merging changes with overlapping modifications.
+
+**Command to Resolve:**
+```bash
+git mergetool
+```
+
+---
+
+### 15. **Git Tags**
+**What:**  
+Tags mark specific commits.
+
+**Command:**
+```bash
+git tag -a v1.0 -m "Release v1.0"
+```
+
+---
+
+### 16. **Git Revert**
+**What:**  
+Reverts a commit by creating a new commit.
+
+**Command:**
+```bash
+git revert <commit-hash>
+```
+
+---
+
+### 17. **Git Cherry Pick**
+**What:**  
+Applies a specific commit to a branch.
+
+**Command:**
+```bash
+git cherry-pick <commit-hash>
+```
+
+---
+
+### 18. **Pull Requests**
+**What:**  
+A mechanism for code review.
+
+**Command:**  
+Create in GitHub UI or CLI using:
+```bash
+gh pr create
+```
+
+---
+
+### 19. **Git Webhook**
+**What:**  
+Triggers external actions on repository events.
+
+---
+
+### 20. **Protecting GitHub Branches**
+**What:**  
+Set restrictions to enforce rules like mandatory reviews.
+
+---
+
+### **Interview Questions**
+#### Conceptual:
+1. What is the purpose of Git’s staging area?
+   **Answer:** It allows reviewing changes before committing.
+
+#### Hands-On:
+2. Demonstrate resolving a merge conflict.
+   **Answer:** Use `git mergetool` or manually edit files.
+
+#### Scenario-Based:
+3. How would you handle a hotfix during a release cycle?
+   **Answer:** Create a hotfix branch, apply changes, and merge back.
+
+#### Troubleshooting:
+4. Why might `git push` fail after a pull?
+   **Answer:** Conflicting changes; resolve and push again.
+
+---
+
+Would you like any specific topic expanded further?

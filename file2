@@ -1,0 +1,191 @@
+Here’s an expanded list of interview questions and answers for a DevOps interview based on Git and related topics. These are categorized into **conceptual**, **hands-on**, **scenario-based**, and **troubleshooting** questions.
+
+---
+
+### **Conceptual Questions**
+
+1. **What are the key differences between Git merge and Git rebase?**
+   - **Answer:**
+     - **Git merge** combines branches and retains the history of all commits.
+     - **Git rebase** rewrites the commit history by placing commits from one branch onto another.
+
+2. **Explain Git’s distributed nature and its advantages in DevOps.**
+   - **Answer:**  
+     - In Git, every developer has a complete copy of the repository, enabling local commits and offline work.
+     - Advantages in DevOps:
+       - Fault tolerance (no single point of failure).
+       - Faster operations like commits and diffs.
+
+3. **What is a pull request, and how does it fit into CI/CD pipelines?**
+   - **Answer:**
+     - A pull request is a mechanism to request code reviews and propose merging changes.
+     - In CI/CD, pull requests often trigger automated tests, builds, and deployment checks.
+
+4. **Why do we use Git tags, and what are the different types?**
+   - **Answer:**
+     - Git tags mark specific points in the commit history (e.g., releases).
+     - Types: **Lightweight** (a simple pointer) and **Annotated** (with metadata like author and timestamp).
+
+5. **What is the difference between `git fetch` and `git pull`?**
+   - **Answer:**
+     - `git fetch`: Downloads changes from the remote repository but doesn’t merge.
+     - `git pull`: Fetches changes and merges them into the current branch.
+
+---
+
+### **Hands-On Questions**
+
+6. **Demonstrate how to create and push a Git branch to a remote repository.**
+   - **Answer:**
+     ```bash
+     git branch feature-branch
+     git checkout feature-branch
+     git push origin feature-branch
+     ```
+
+7. **How do you resolve a merge conflict?**
+   - **Answer:**
+     ```bash
+     git merge branch-name
+     # Edit conflicting files manually
+     git add resolved-file
+     git commit -m "Resolved conflicts"
+     ```
+
+8. **How can you view the commit history graphically?**
+   - **Answer:**
+     ```bash
+     git log --graph --oneline --all
+     ```
+
+9. **How do you stash changes and apply them later?**
+   - **Answer:**
+     ```bash
+     git stash
+     # Switch branch or work on other tasks
+     git stash apply
+     ```
+
+10. **Show how to tag a commit and push it to a remote repository.**
+    - **Answer:**
+      ```bash
+      git tag -a v1.0 -m "Version 1.0"
+      git push origin v1.0
+      ```
+
+---
+
+### **Scenario-Based Questions**
+
+11. **You accidentally committed sensitive information (e.g., API keys). How do you remove it from the repository?**
+    - **Answer:** Use `git filter-repo` or `git rebase` to remove it from history:
+      ```bash
+      git filter-repo --path sensitive-file --invert-paths
+      ```
+
+12. **How would you handle a situation where two developers push conflicting changes to the same branch?**
+    - **Answer:**
+      - Identify conflicts using `git pull`.
+      - Resolve conflicts in files.
+      - Commit and push the changes after resolution.
+
+13. **You need to implement a feature but the main branch is unstable. How do you proceed?**
+    - **Answer:** Create a new branch from the last stable commit:
+      ```bash
+      git checkout -b feature-branch stable-commit-hash
+      ```
+
+14. **Your CI/CD pipeline fails because of a bad commit. How do you quickly revert it?**
+    - **Answer:**
+      ```bash
+      git revert <bad-commit-hash>
+      git push
+      ```
+
+15. **Your team uses feature branches. How do you incorporate changes from the main branch into your feature branch?**
+    - **Answer:**
+      ```bash
+      git checkout feature-branch
+      git pull origin main
+      # Resolve conflicts if any
+      git commit -m "Merged main into feature-branch"
+      ```
+
+---
+
+### **Troubleshooting Questions**
+
+16. **You get a `detached HEAD` error while checking out a commit. What does it mean and how do you fix it?**
+    - **Answer:**
+      - A `detached HEAD` means you’re viewing a commit that’s not associated with any branch.
+      - Fix:
+        ```bash
+        git checkout -b new-branch
+        ```
+
+17. **Why does Git refuse to push your changes, asking for a pull first?**
+    - **Answer:**  
+      This happens when the remote branch has changes that are not in your local branch.
+      - Fix:
+        ```bash
+        git pull --rebase
+        git push
+        ```
+
+18. **You cloned a repository, but a new branch was added remotely. How do you fetch it?**
+    - **Answer:**
+      ```bash
+      git fetch
+      git checkout branch-name
+      ```
+
+19. **You see multiple commits in your history that are not relevant to your work. How do you squash them?**
+    - **Answer:**
+      ```bash
+      git rebase -i HEAD~N
+      # Mark commits as 'squash' to combine them
+      ```
+
+20. **After a failed rebase, how do you abort and return to the previous state?**
+    - **Answer:**
+      ```bash
+      git rebase --abort
+      ```
+
+---
+
+### **Advanced Questions**
+
+21. **What is Git’s internal data structure?**
+    - **Answer:** Git uses a **Directed Acyclic Graph (DAG)** where commits are nodes and parent-child relationships represent the history.
+
+22. **How do you protect a branch in GitHub?**
+    - **Answer:**
+      - In GitHub settings:
+        1. Go to "Settings" → "Branches".
+        2. Add branch protection rules (e.g., require pull request reviews, CI checks).
+
+23. **How do you implement Git webhooks in a CI/CD pipeline?**
+    - **Answer:**
+      - Configure a webhook in the GitHub repository.
+      - Send events (e.g., push, PR) to the CI/CD system.
+
+24. **Explain the process of cherry-picking a commit. When would you use it?**
+    - **Answer:** Cherry-picking applies a specific commit to another branch:
+      ```bash
+      git cherry-pick <commit-hash>
+      ```
+      Use it when you need a specific feature or bug fix from another branch.
+
+25. **How do you debug Git performance issues in a large repository?**
+    - **Answer:**
+      - Use `git fsck` for integrity checks.
+      - Use `git gc` to optimize storage.
+      - Monitor using:
+        ```bash
+        GIT_TRACE=1 git command
+        ```
+
+---
+
+Would you like me to focus on any specific topic or provide additional real-world examples?
